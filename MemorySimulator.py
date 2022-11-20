@@ -1,8 +1,6 @@
 from queue import Empty
 import random
 
-#Luis Felipe Menslin
-
 memoria = [' '] * 100
 opcao = 0
 tamanho = 0
@@ -18,55 +16,55 @@ while(opcao != 4):
     contador = []
     maior = []
     menor = []
-    print("1 - Primeira Escolha")
-    print("2 - Melhor Escolha")
-    print("3 - Pior Escolha")
-    print("4 - Sair")
-    print("Escolha o algoritmo pelo numero")
+    print("1 - First Choice")
+    print("2 - Best Choice")
+    print("3 - Worst Choice")
+    print("4 - End the algorithm")
+    print("Choose the algorithm by the number")
     opcao = int(input())
     if (opcao == 4):
         break
-    print("Digite o tamanho da informacao")
+    print("Type the size of the information")
     tamanho = int(input())
-    print("Digite a letra a ser utiliada")
+    print("Type something to fill the spaces")
     letra = input()
 
-    if(opcao == 1): #Primeira escolha
+    if(opcao == 1): 
         for i in range(100):  
-            if (memoria[i] == ' '): # Identificando as casas vazias
-                contador.append(i) # Gravando a localização da(s) vazia(s)
-                if (len(contador) == tamanho): # Se a quantidade de casas gravadas é suficiente pra suportar o tamanho informado
+            if (memoria[i] == ' '): 
+                contador.append(i) 
+                if (len(contador) == tamanho): 
                     for i in range(tamanho):
-                        memoria[contador[i]] = letra # Gravando o programa no primeiro espaço com tamanho suficiente
+                        memoria[contador[i]] = letra 
                     break 
             else:
-                contador = [] # Se a quantidade de espaços vazios contados antes de encontrar um valor, não foi suficiente para armazenar o programa, ele zera a contagem.
+                contador = [] 
     else:
 
-        if (opcao == 2): #Melhor escolha
+        if (opcao == 2):
             for i in range(100):
-                if (memoria[i] == ' '): # Identificando as casas vazias
-                    contador.append(i) # Gravando a localização da(s) vazia(s)
+                if (memoria[i] == ' '):
+                    contador.append(i) 
                 else:
-                    if (len(menor) == 0 and len(contador) == tamanho): # O programa vai ser gravado somente 1 vez e quando o tamanho for igual a quantidade de posições gravadas no contador
+                    if (len(menor) == 0 and len(contador) == tamanho):
                         menor = contador
                         break
-                    contador = [] # Caso ele encontre um valor preenchido e não entre na condição ele zera o contador
+                    contador = []
             for i in range(tamanho):
-                memoria[menor[i]] = letra # Gravando o programa nas coordenadas em que o espaço disponivel é exatamente do tamanho do programa 
+                memoria[menor[i]] = letra
         else:
 
-            if(opcao == 3): # Pior escolha
+            if(opcao == 3):
                 for i in range(100):
-                    if (memoria[i] == ' '): # Identificando as casas vazias
-                        contador.append(i) # Gravando a localização da(s) vazia(s)
+                    if (memoria[i] == ' '):
+                        contador.append(i)
                     else:
-                        if (len(maior) == 0): # Executa só uma vez
-                            maior = contador # Gravando o primeiro valor do maior
-                        if (len(contador) > len(maior) and len(contador) >= tamanho): # Condição pra substituir o maior
+                        if (len(maior) == 0):
                             maior = contador
-                        contador = [] # Zerando o contador
+                        if (len(contador) > len(maior) and len(contador) >= tamanho):
+                            maior = contador
+                        contador = []
                 for i in range(tamanho):
-                    memoria[maior[i]] = letra # Gravando o valor na memoria
+                    memoria[maior[i]] = letra
     print(memoria)
-print("Processo finalizado!")
+print("Process ended!")
